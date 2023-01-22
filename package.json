@@ -1,0 +1,19 @@
+{
+  "name": "tm",
+  "version": "1.0.0",
+  "description": "Simple task manager",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server",
+    "start:dev": "nodemon --ignore server/temp/ server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

@@ -1,0 +1,270 @@
+:root {
+  --base-font-family: 'Fira Sans', sans-serif, Helvetica;
+
+  --dark-blue-color: #331e02;
+  --light-blue-color: #d5c4aa;
+  --mid-blue-color: #deac70;
+
+  --shadow-color: #00000029;
+  --tasklist-last-back-color: #cbdff473;
+  --tasklist-back-color: #cbdff4bf;
+
+  --main-header-text-color: var(--dark-blue-color);
+  --background-start-color: var(--mid-blue-color);
+  --background-end-color: #cebc82;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: var(--base-font-family);
+}
+
+body {
+  padding: 0 calc(100vw / 24);
+  min-height: 100vh;
+  background: linear-gradient(var(--background-start-color), var(--background-end-color)) center / cover no-repeat;
+  transition: .5s;
+}
+
+body.dark-theme {
+  --background-start-color: #01203F;
+  --background-end-color: #053A47;
+  --main-header-text-color: #40a2b9;
+  --light-blue-color: #5d93bd;
+  --mid-blue-color: #5d93bd;
+  --dark-blue-color: var(--background-start-color);
+}
+
+header#main-header {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4vh 0;
+  font-size: clamp(1rem, 2.7vw, 3.125rem);
+  color: var(--main-header-text-color);
+}
+
+.main-header__right-block, .user-info {
+  display: flex;
+  align-items: center;
+}
+
+.main-header__right-block {
+  gap: 4vw;
+}
+
+.user-info {
+  gap: 2vw;
+}
+
+.avatar {
+  width: clamp(2rem, 6vw, 5rem);
+  height: clamp(2rem, 6vw, 5rem);
+  border-radius: 50%;
+  border: 2px solid white;
+  background: url(images/keanu.jpg) center / cover;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 7vw;
+  height: 4vw;
+}
+
+.toggle-switch > input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--mid-blue-color);
+  border-radius: 2vw;
+  border: 1px solid white;
+  transition: .4s;
+}
+
+.toggle-switch__slider::before {
+  width: calc(4vw - 6px);
+  height: calc(4vw - 6px);
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  transition: .4s;
+  border-radius: 50%;
+  background-color: white;
+}
+
+input:checked + .toggle-switch__slider {
+  background-color: var(--dark-blue-color);
+}
+
+input:checked + .toggle-switch__slider::before {
+  transform: translateX(3vw);
+}
+
+main {
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 4vh;
+  margin-bottom: 4vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  row-gap: 4vh;
+  column-gap: calc(8% / 3);
+}
+
+.tm-tasklist {
+  width: 23%;
+  box-sizing: border-box;
+  border-radius: 1vw;
+  padding: 1vw 1.2vw;
+  box-shadow: 2px 2px 4px var(--shadow-color);
+  background-color: var(--tasklist-back-color);
+}
+
+.tm-tasklist:last-child {
+  background-color: var(--tasklist-last-back-color);
+  transition: background-color 1s ease;
+}
+
+.tm-tasklist:last-child:hover {
+  background-color: var(--tasklist-back-color);
+}
+
+#tm-tasklist-add-tasklist {
+  border: none;
+  background: none;
+  margin-bottom: 0;
+  font-weight: 400;
+  color: var(--dark-blue-color);
+  font-size: clamp(0.75rem, 2vw, 2rem);
+}
+
+#tm-tasklist-add-tasklist:hover {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tm-tasklist-header {
+  font-size: clamp(0.75rem, 2vw, 2rem);
+  font-weight: 600;
+  margin-bottom: 1vw;
+  color: var(--dark-blue-color);
+}
+
+.tm-tasklist-add-task {
+  border: none;
+  background: none;
+  font-size: clamp(0.7rem, 1.5vw, 1.5rem);
+  color: var(--dark-grey-color);
+}
+
+.tm-tasklist-add-task:hover {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tm-tasklist-task {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1vw;
+  padding: 1vw;
+  margin-bottom: 1vw;
+  border-radius: 0.75vw;
+  box-shadow: 2px 2px 4px var(--shadow-color);
+  background-color: var(--light-blue-color);
+  border: 2px solid var(--light-blue-color);
+  transition: background-color 0.5s ease, border 0.5s ease;
+}
+
+.tm-tasklist-task:hover {
+  background-color: var(--mid-blue-color);
+  border-color: var(--dark-blue-color);
+}
+
+.tm-tasklist-task-text {
+  overflow-wrap: anywhere;
+  font-size: clamp(0.7rem, 1.5vw, 1.5rem);
+}
+
+.tm-tasklist-task-controls-row {
+  display: flex;
+  justify-content: center;
+  gap: calc(2vw / 3);
+}
+
+.tm-tasklist-task-controls-row:first-child {
+  margin-bottom: calc(2vw / 3);
+}
+
+.tm-tasklist-task-controls-button {
+  width: 2vw;
+  height: 2vw;
+  opacity: 0.6;
+  border: none;
+}
+
+.tm-tasklist-task-controls-button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.left-arrow {
+  background: url(assets/left-arrow.svg) center / cover;
+}
+
+.tm-tasklist:first-child .left-arrow {
+  display: none;
+}
+
+.right-arrow {
+  background: url(assets/right-arrow.svg) center / cover;
+}
+
+.tm-tasklist:nth-last-child(2) .right-arrow {
+  display: none;
+}
+
+.edit-icon {
+  background: url(assets/edit.svg) center / cover;
+}
+
+.delete-icon {
+  background: url(assets/delete-button.svg) center / cover;
+}
+
+#add-tasklist-input {
+  box-sizing: border-box;
+  width: 100%;
+  border: none;
+  border-radius: 0.7vw;
+  box-shadow: 0 0 4px var(--shadow-color);
+  padding: 0.6vw;
+  font-size: clamp(0.7rem, 1.5vw, 1.5rem);
+  color: black;
+  opacity: 0.7;
+  outline: none;
+  display: none;
+}
+
+#add-tasklist-input:hover,
+#add-tasklist-input:focus {
+  opacity: 1;
+}
