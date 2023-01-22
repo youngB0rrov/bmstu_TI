@@ -238,7 +238,7 @@ class Tasklist {
   }
 
   onAddTaskButtonClick = async () => {
-    const newTaskName = prompt('Введите список товаров, которые будет лежать на новом стиллаже:');
+    const newTaskName = prompt('Введите название товара, который будет лежать на новом стиллаже:');
 
     if (!newTaskName) return;
 
